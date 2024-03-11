@@ -2,6 +2,8 @@ import sys
 import requests
 from credentials import access_token, consumer_key
 
+# This script batch-adds a list of URLs to a Pocket account.  It's mostly used
+# for taking advantage of the Kobo integration.
 
 with open(sys.argv[1]) as f:
     urls = [x.rstrip() for x in f.readlines()]
@@ -35,4 +37,4 @@ resp = requests.post(
     },
     headers={'X-Accept': 'application/json'}
 )
-print(resp.json())
+print(resp.text)
